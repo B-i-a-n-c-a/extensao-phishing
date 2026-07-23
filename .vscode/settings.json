@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "/home/bianca_/Downloads/Disciplinas UFOP/Segurança em Redes/extensao-phishing/venv/bin/python",
+  "python.analysis.extraPaths": [
+    "/home/bianca_/Downloads/Disciplinas UFOP/Segurança em Redes/extensao-phishing/venv/lib/python3.12/site-packages"
+  ],
+  "python.analysis.autoSearchPaths": true
+}

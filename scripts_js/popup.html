@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="wave-background"></div>
+
+    <div class="container">
+        <div class="top-nav">
+            <button id="reset-btn" class="top-back-btn hidden" title="Voltar para a tela inicial">
+                <span id="icon-back"></span> Voltar
+            </button>
+        </div>
+
+        <header>
+            <div class="logo-container">
+                <span id="icon-shield"></span>
+                <h1>PhishGuard</h1>
+            </div>
+            <p class="subtitle">Análise Heurística Ativa</p>
+        </header>
+
+        <main>
+            <!-- Card de status, oculto por padrão até ser chamado pela análise -->
+            <div id="analysis-card" class="status-card glow-card hidden">
+                <div class="card-header">
+                    <span>Status do Domínio Atual</span>
+                    <div class="pulse-indicator"></div>
+                </div>
+                <div class="domain-display">
+                    <span id="icon-loading" class="hidden"></span>
+                    <span id="current-domain">Carregando...</span>
+                </div>
+                <div class="status-badge safe" id="status-badge">AGUARDANDO ANÁLISE</div>
+
+                <!-- Botão proeminente com SVG de alerta para abrir o modal explicativo (Parte 3) -->
+                <button id="btn-explicar-ameaca" class="explain-alert-btn hidden">
+                    <span id="icon-alert-badge" class="alert-icon-svg-container"></span>
+                    <span>Por que esta URL é suspeita?</span>
+                </button>
+            </div>
+
+            <div class="manual-check-section">
+                <label for="manual-url">Verificação Manual</label>
+                <div class="input-group">
+                    <input type="text" id="manual-url" placeholder="Cole uma URL suspeita...">
+                    <button id="verify-btn" class="glow-button"><span id="icon-search"></span> Analisar</button>
+                </div>
+                <div id="validation-message" class="validation-msg hidden"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Didático de Explicação de Ameaças (Parte 3) -->
+    <div id="modal-explicacao" class="modal-overlay hidden">
+        <div class="modal-card glow-card">
+            <button id="btn-fechar-modal-topo" class="modal-close-top" title="Fechar"></button>
+            
+            <!-- Navegação por abas se houver mais de uma ameaça -->
+            <div id="modal-tabs" class="threat-tabs hidden"></div>
+
+            <div class="modal-header-threat">
+                <span id="modal-threat-icon" class="threat-badge-icon-svg"></span>
+                <div>
+                    <h2 id="modal-threat-title">Atenção! Cópia Falsa de Site Famoso</h2>
+                    <div id="modal-threat-risk-badge" class="risk-pill danger">Risco Alto</div>
+                </div>
+            </div>
+
+            <div class="modal-body-content">
+                <div id="modal-threat-summary" class="threat-summary-box"></div>
+
+                <div class="explain-section">
+                    <h3><span id="icon-section-meaning"></span> O que significa?</h3>
+                    <p id="modal-threat-meaning"></p>
+                </div>
+
+                <div class="explain-section">
+                    <h3><span id="icon-section-danger"></span> Por que é perigoso?</h3>
+                    <ul id="modal-threat-dangers" class="danger-list"></ul>
+                </div>
+
+                <div class="explain-section">
+                    <h3><span id="icon-section-tips"></span> Dicas de Segurança:</h3>
+                    <ul id="modal-threat-tips" class="tips-list"></ul>
+                </div>
+
+                <div class="explain-section example-box">
+                    <h3><span id="icon-section-example"></span> Exemplo Prático:</h3>
+                    <p id="modal-threat-example"></p>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button id="btn-fechar-modal" class="glow-button primary-action">Entendi, vou fechar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="icons_svg.js"></script>
+    <script src="explicacoes_ameacas.js"></script>
+    <script src="url_preprocessor.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
